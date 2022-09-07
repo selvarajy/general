@@ -1,0 +1,12 @@
+public class ELBAppDeployer {
+
+	public static void deploy(String arg) throws Exception{
+		if (!(arg == null || "local".equals(arg)))
+			WinBatchFileRunner.process("<path to batch file>");
+		else
+			System.out.println("Deploy script called");
+	}
+	public static void main(String[] args) throws Exception {
+		deploy("local");
+	}
+}
