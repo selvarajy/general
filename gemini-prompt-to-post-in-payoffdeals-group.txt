@@ -1,0 +1,45 @@
+START PROMPT
+
+PayoffDeals.com Group Post Generation - Configurable User/Group/Name Input, Leading Space for Links/Numbers (as Anchor Tags), DOUBLE Line Breaks, and Final URL Output
+
+Objective: To generate an authentic and engaging post for a specified group on PayoffDeals.com by a specified user. Includes user-provided links and phone numbers within the message with a leading space, line breaks using two consecutive <br> tags, and an accessible image or video. User-provided URLs should not have brackets, and any URLs within the message will be converted into HTML anchor tags. The final output will be the complete, URL-encoded HTTP URL for posting to the specified API endpoint, including necessary parameters which are either static (defined in the prompt) or dynamic (provided by the user).
+
+**Parameter Status:** This section defines whether core parameters are expected as static context or dynamic user input for *this specific prompt instance*. For each parameter, state either `STATIC` followed by its value in brackets, or `DYNAMIC`.
+
+* `userid`: DYNAMIC
+* `groupid`: DYNAMIC
+* `name`: DYNAMIC
+* `title`: DYNAMIC // Title is always dynamic user input for the post
+* `message`: DYNAMIC // Message content is always dynamic user input for the post
+* `image`: DYNAMIC (Visual Content URL) // Visual URL is always dynamic user input
+* `video`: DYNAMIC (Visual Content URL) // Visual URL is always dynamic user input
+
+Please provide answers to the following questions to generate the post content and provide necessary dynamic parameters. **This list includes all parameters marked as DYNAMIC in the "Parameter Status" section above.**
+
+[If `userid` status is DYNAMIC, include: User ID: What is the User ID for the person making this post?]
+[If `groupid` status is DYNAMIC, include: Group ID: What is the Group ID for the group where this post should be made?]
+[If `name` status is DYNAMIC, include: User Name: What is the Name associated with the User ID making this post?]
+
+Post Topic: What specific topic related to commerce, deals, AI, or anything else you find interesting would you like this post to be about? (Corresponds to `title`)
+
+Links and Phone Numbers to Include: Are there any specific HTTP URLs or phone numbers you would like to include within the message of the post? Please provide them now. I will integrate them naturally into the generated text with a leading space and without adding brackets, and convert them into HTML anchor tags. (Part of `message` content)
+
+Existing Content: Do you have any other specific text snippets or previous posts that you think might be relevant or helpful to incorporate into this new post? (Part of `message` content)
+
+Visual Preference: Would you prefer to include an image or a video in this post to make it more visually engaging? (Determines which visual URL parameter to use: `image` or `video`)
+
+Visual Concept: Do you have any keywords or a general concept in mind for the image or video? (Used to find the visual URL)
+
+Crucially, remember that all line breaks in the generated message parameter of the final URL MUST be represented by two consecutive <br> tags (<br><br>). Also, any HTTP/HTTPS URLs found in the message content will be converted into standard HTML anchor tags (`<a href="...">...</a>`) before URL encoding.
+
+Once you provide your input for all parameters marked as DYNAMIC in the "Parameter Status" section, I will:
+
+Collect the values for userid, groupid, and name from your input *if* they are marked DYNAMIC, or use the static values defined in the "Parameter Status" section *if* they are marked STATIC.
+Integrate any existing content and the links/phone numbers you provide into a relevant and engaging message, ensuring the entire message is URL-encoded and includes double <br><br> tags for line breaks, a leading space before any included URLs/phone numbers (which will then be converted to anchor tags), and all HTTP/HTTPS URLs within the message will be replaced by standard HTML anchor tags (`<a href="...">...</a>`).
+Generate a URL-encoded title based on the chosen Post Topic.
+Find and include an accessible image or video URL (also URL-encoded), based on Visual Preference/Concept.
+Use all collected/static parameter values (`userid`, `groupid`, `name`, encoded `title`, encoded `message`, encoded `image` or `video`) to include in the final URL.
+Finally, I will construct and provide the complete HTTP URL that incorporates all the parameters for the https://payoffdeals.com/api/user/postingroup endpoint, ready for theoretical use in a GET request.
+I'm ready for your input! Please provide all the necessary information as requested in the questions above, based on the **Parameter Status** defined in this prompt.
+
+END PROMPT
